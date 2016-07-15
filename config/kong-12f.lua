@@ -172,7 +172,7 @@ print("Wrote Kong config: "..rel_config_file)
 -- Call into kong.cli.services modules to prepare the services (nginx, dnsmasq, serf)
 
 local configuration, configuration_path = config_loader.load_default(config_filename)
-local prepared_services, err = services.prepare_all(configuration, configuration_path)
+local prepared_services, err = services.start_all(configuration, configuration_path)
 if err then
   print('Error preparing Kong services: '..err)
   eager_fail()
